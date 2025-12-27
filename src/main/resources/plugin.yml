@@ -1,0 +1,28 @@
+name: SeeResourcesDeficit
+version: '1.2.0'
+main: ru.gdev.seeresourcesdeficit.SeeResourcesDeficit
+api-version: '1.16'
+load: STARTUP
+authors: [GDev]
+website: https://seemine.su
+
+commands:
+  seeresourcesdeficit:
+    description: Управление плагином дефицита ресурсов
+    usage: |
+      /seeresourcesdeficit reload - Перезагрузить конфиг
+      /seeresourcesdeficit enable <предмет> - Включить дефицит
+      /seeresourcesdeficit disable <предмет> - Выключить дефицит
+      /seeresourcesdeficit list - Список предметов
+      /seeresourcesdeficit reset <предмет|all> - Сбросить счетчик
+    permission: seeresourcesdeficit.admin
+    permission-message: '&#FF5555У вас нет прав для использования этой команды!'
+    aliases: [seerd, srd, deficit]
+
+permissions:
+  seeresourcesdeficit.admin:
+    description: Полный доступ к управлению плагином
+    default: op
+  seeresourcesdeficit.notify:
+    description: Получать уведомления о дефиците
+    default: true

@@ -1,0 +1,69 @@
+#
+# Плагин поддерживает & цвета и HEX цвета.
+# Пример применения "&" цветов: '&cДЕФИЦИТ'
+# Пример применения HEX цветов: '&#FF5555ДЕФИЦИТ'
+#
+# Поддерживаемые версии: 1.16.5-1.20.1
+#
+
+deficit_items: #Предметы для которых будет дефицит (их можно создавать бесконечно)
+  diamond: #ID предмета (уникальный идентификатор)
+    material: diamond #Материал предмета (название из Minecraft)
+    limit: 1000 #Лимит после которого дефицит для предмета включится
+    limit_end: #Что будет при попытке вскопать алмазную руду или подобрать алмаз
+      VirtualEntity: #Появляться эффекты из VirtualEntityAPI
+        enable: true #Включено или выключен
+        types: #Типы эффектов
+          - explosion #Взрыв (без урона)
+          - lightning #Молния (эффект без урона)
+          - particleanimation1 #Анимация 1 состоящая из партиклов
+          - particleanimation2 #Анимация 2 состоящая из партиклов
+      Title: #Появляться Title и SubTitle
+        enable: true #Включено или выключен
+        title: '&#FF5555ДЕФИЦИТ' #Текст для Title (поддерживает HEX цвета)
+        subtitle: '&#FFAA00На этот предмет закончился лимит' #Текст для SubTitle
+      BossBar: #BossBar над интерфейсом
+        enable: false #Включено или выключен
+        bossbar: '&#FF5555На этот предмет закончился лимит!' #Текст для BossBar
+        type: SEGMENTED_10 #Тип BossBar (SOLID, SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20)
+        color: RED #Цвет BossBar (PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE)
+        time: 5 #Длительность BossBar в секундах
+      Message: #Сообщение в чат для игрока
+        enable: true #Включено или выключен
+        message: #Сообщение (можно в несколько строк)
+          - '&#FF5555ДЕФИЦИТ &b>> &cЭтот предмет невозможно добыть из-за его дефицита!'
+          - '&7Пожалуйста, выберите другой ресурс для добычи.'
+
+  # Пример второго предмета
+  emerald:
+    material: emerald
+    limit: 500
+    limit_end:
+      VirtualEntity:
+        enable: true
+        types:
+          - explosion
+      Title:
+        enable: true
+        title: '&#00FF00ДЕФИЦИТ ИЗУМРУДОВ'
+        subtitle: '&#55FF55Лимит изумрудов исчерпан'
+      Message:
+        enable: true
+        message:
+          - '&#00FF00ИЗУМРУДЫ &b>> &cЛимит исчерпан!'
+
+  # Пример для руды (можно ломать блоки)
+  diamond_ore:
+    material: diamond_ore
+    limit: 50
+    limit_end:
+      VirtualEntity:
+        enable: false
+      Title:
+        enable: true
+        title: '&#FF5555РУДА ЗАКОНЧИЛАСЬ'
+        subtitle: '&7Алмазная руда больше не генерируется'
+      Message:
+        enable: true
+        message:
+          - '&cАлмазная руда временно недоступна!'
